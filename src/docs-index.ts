@@ -12,7 +12,7 @@ export interface DocEntry {
   path: string;
 }
 
-const docModules = import.meta.glob<{
+export const docModules = import.meta.glob<{
   default: ComponentType;
   frontmatter?: { title?: string; description?: string };
 }>("/docs/**/*.md", { eager: true }) as Record<

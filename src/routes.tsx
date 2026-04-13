@@ -3,49 +3,38 @@ import type { RouteRecord } from "vite-react-ssg";
 import { Head } from "vite-react-ssg";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
+import { docModules } from "./docs-index";
 
-// Lazily import each doc — each becomes its own code-split chunk.
-// Because these are concrete paths (not `:param` patterns), vite-react-ssg
-// pre-renders every one of them automatically at build time.
-const docModules = import.meta.glob<{
-  default: ComponentType;
-  frontmatter?: { title?: string; description?: string };
-}>("/docs/**/*.md") as Record<
-  string,
-  () => Promise<{
-    default: ComponentType;
-    frontmatter?: { title?: string; description?: string };
-  }>
->;
+const docRoutes: RouteRecord[] = Object.entries(docModules).map(
+  ([filePath, mod]) => {
+    const slug = filePath.replace("/docs/", "").replace(/\.mdx?$/, "");
 
-const docRoutes: RouteRecord[] = Object.keys(docModules).map((filePath) => {
-  const slug = filePath.replace("/docs/", "").replace(/\.mdx?$/, "");
-  return {
-    path: `/${slug}`,
-    lazy: async () => {
-      const mod = await docModules[filePath]();
+    function DocPage() {
       const MDXContent = mod.default;
       const pageTitle = mod.frontmatter?.title;
       const pageDescription = mod.frontmatter?.description;
-      function DocPage() {
-        return (
-          <>
-            <Head>
-              <title>{pageTitle ? `${pageTitle} — Docs` : "Docs"}</title>
-              {pageDescription && (
-                <meta name="description" content={pageDescription} />
-              )}
-            </Head>
-            <article className="prose prose-slate max-w-none">
-              <MDXContent />
-            </article>
-          </>
-        );
-      }
-      return { Component: DocPage };
-    },
-  };
-});
+
+      return (
+        <>
+          <Head>
+            <title>{pageTitle ? `${pageTitle} — Syntax` : "Syntax"}</title>
+            {pageDescription && (
+              <meta name="description" content={pageDescription} />
+            )}
+          </Head>
+          <article className="prose prose-invert prose-slate prose-sky max-w-none">
+            <MDXContent />
+          </article>
+        </>
+      );
+    }
+
+    return {
+      path: `/${slug}`,
+      Component: DocPage,
+    };
+  },
+);
 
 export const routes: RouteRecord[] = [
   {
