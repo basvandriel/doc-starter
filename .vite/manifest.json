@@ -1,0 +1,22 @@
+{
+  "_client-BeEAdSVm.js": {
+    "file": "assets/client-BeEAdSVm.js",
+    "name": "client",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "index.html": {
+    "file": "assets/app-DWtdxL1P.js",
+    "name": "app",
+    "src": "index.html",
+    "isEntry": true,
+    "dynamicImports": [
+      "_client-BeEAdSVm.js"
+    ],
+    "css": [
+      "assets/app-D4tG0vQD.css"
+    ]
+  }
+}
