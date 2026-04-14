@@ -12,6 +12,8 @@ on:
       - "tsconfig.json"
       - "vite.config.ts"
       - ".github/workflows/deploy-gh-pages.yml"
+    paths-ignore:
+      - "site/**"
   workflow_dispatch: {}
 
 permissions:
@@ -44,7 +46,8 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          publish_branch: gh-pages
+          publish_branch: main
+          destination_dir: site
           # Keep history and avoid Jekyll processing
           keep_files: false
           enable_jekyll: false
