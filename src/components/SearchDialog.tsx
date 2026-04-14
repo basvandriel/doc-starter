@@ -93,7 +93,7 @@ export default function SearchDialog({ open, onClose }: Props) {
 
       {/* Dialog */}
       <div className="relative mx-auto mt-[15vh] w-full max-w-lg px-4">
-        <div className="overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-slate-950/10 dark:bg-slate-900 dark:ring-slate-700/60 dark:shadow-slate-950/50">
+        <div className="overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-slate-900/10 dark:bg-slate-900 dark:ring-slate-700/60 dark:shadow-slate-950/50">
           {/* Search input */}
           <div className="flex items-center gap-3 border-b border-slate-200 px-4 dark:border-slate-800">
             <svg
@@ -141,7 +141,9 @@ export default function SearchDialog({ open, onClose }: Props) {
                       onClose();
                     }}
                   >
-                    <span className={`text-sm font-medium ${i === activeIndex ? "text-sky-700 dark:text-sky-300" : "text-slate-900 dark:text-slate-100"}`}>
+                    <span
+                      className={`text-sm font-medium ${i === activeIndex ? "text-sky-700 dark:text-sky-300" : "text-slate-900 dark:text-slate-100"}`}
+                    >
                       {doc.title}
                     </span>
                     {doc.description && (

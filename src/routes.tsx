@@ -33,7 +33,7 @@ const docRoutes: RouteRecord[] = Object.entries(docModules).map(
           <article className="prose prose-slate max-w-none">
             <MDXContent />
           </article>
-          <div className="mt-12 overflow-hidden rounded-[1.75rem] border border-slate-200 bg-slate-50 dark:border-slate-800/60 dark:bg-slate-900/50">
+          <div className="mt-12 overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-sm dark:border-slate-800/60 dark:bg-slate-900/50">
             <div className="grid gap-5 p-6 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-center">
               <div className="flex h-14 w-14 items-center justify-center rounded-[1.2rem] bg-slate-100 text-slate-600 ring-1 ring-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700/60">
                 <svg

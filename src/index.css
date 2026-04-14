@@ -4,24 +4,90 @@
 /* Class-based dark mode: .dark on any ancestor activates dark: variants */
 @variant dark (&:where(.dark, .dark *));
 
+/* ── Light mode prose ─────────────────────────────────────────────────── */
+.prose {
+  --tw-prose-body:          theme(colors.slate.700);
+  --tw-prose-headings:      theme(colors.slate.900);
+  --tw-prose-lead:          theme(colors.slate.600);
+  --tw-prose-bold:          theme(colors.slate.900);
+  --tw-prose-links:         theme(colors.sky.600);
+  --tw-prose-code:          theme(colors.sky.700);
+  --tw-prose-pre-code:      theme(colors.slate.800);
+  --tw-prose-pre-bg:        theme(colors.slate.50);
+  --tw-prose-captions:      theme(colors.slate.500);
+  --tw-prose-quotes:        theme(colors.slate.700);
+  --tw-prose-quote-borders: theme(colors.sky.400);
+  --tw-prose-hr:            theme(colors.slate.200);
+  --tw-prose-counters:      theme(colors.slate.500);
+  --tw-prose-bullets:       theme(colors.slate.400);
+  --tw-prose-th-borders:    theme(colors.slate.300);
+  --tw-prose-td-borders:    theme(colors.slate.200);
+}
+
+/* Code block polish in light mode */
+.prose pre {
+  background-color: theme(colors.slate.50);
+  border: 1px solid theme(colors.slate.200);
+  color: theme(colors.slate.800);
+}
+
+/* Inline code chip in light mode */
+.prose :not(pre) > code {
+  color: theme(colors.sky.700);
+  background-color: theme(colors.sky.50);
+  border: 1px solid theme(colors.sky.100);
+  border-radius: 0.3rem;
+  padding: 0.15em 0.4em;
+}
+
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  content: none;
+}
+
+/* Table styling */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.prose thead th {
+  background-color: theme(colors.slate.100);
+  color: theme(colors.slate.700);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid theme(colors.slate.200);
+}
+
+.prose tbody td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid theme(colors.slate.200);
+  color: theme(colors.slate.700);
+}
+
+.prose tbody tr:last-child td {
+  border-bottom: none;
+}
+
 /* ── Dark mode prose ──────────────────────────────────────────────────── */
 .dark .prose {
-  --tw-prose-body:         theme(colors.slate.300);
-  --tw-prose-headings:     theme(colors.slate.100);
-  --tw-prose-lead:         theme(colors.slate.400);
-  --tw-prose-bold:         theme(colors.slate.100);
-  --tw-prose-links:        theme(colors.sky.400);
-  --tw-prose-code:         theme(colors.sky.300);
-  --tw-prose-pre-code:     theme(colors.slate.200);
-  --tw-prose-pre-bg:       theme(colors.slate.800);
-  --tw-prose-captions:     theme(colors.slate.500);
-  --tw-prose-quotes:       theme(colors.slate.300);
-  --tw-prose-quote-borders:theme(colors.sky.500);
-  --tw-prose-hr:           theme(colors.slate.700);
-  --tw-prose-counters:     theme(colors.slate.400);
-  --tw-prose-bullets:      theme(colors.slate.600);
-  --tw-prose-th-borders:   theme(colors.slate.600);
-  --tw-prose-td-borders:   theme(colors.slate.700);
+  --tw-prose-body: theme(colors.slate.300);
+  --tw-prose-headings: theme(colors.slate.100);
+  --tw-prose-lead: theme(colors.slate.400);
+  --tw-prose-bold: theme(colors.slate.100);
+  --tw-prose-links: theme(colors.sky.400);
+  --tw-prose-code: theme(colors.sky.300);
+  --tw-prose-pre-code: theme(colors.slate.200);
+  --tw-prose-pre-bg: theme(colors.slate.800);
+  --tw-prose-captions: theme(colors.slate.500);
+  --tw-prose-quotes: theme(colors.slate.300);
+  --tw-prose-quote-borders: theme(colors.sky.500);
+  --tw-prose-hr: theme(colors.slate.700);
+  --tw-prose-counters: theme(colors.slate.400);
+  --tw-prose-bullets: theme(colors.slate.600);
+  --tw-prose-th-borders: theme(colors.slate.600);
+  --tw-prose-td-borders: theme(colors.slate.700);
 }
 
 /* Code block polish in dark mode */
@@ -44,4 +110,16 @@
 .dark .prose :not(pre) > code::before,
 .dark .prose :not(pre) > code::after {
   content: none;
+}
+
+/* Dark table styling */
+.dark .prose thead th {
+  background-color: theme(colors.slate.800);
+  color: theme(colors.slate.200);
+  border-bottom-color: theme(colors.slate.700);
+}
+
+.dark .prose tbody td {
+  color: theme(colors.slate.300);
+  border-bottom-color: theme(colors.slate.800);
 }

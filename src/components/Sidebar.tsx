@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { docsGroups } from "../content";
 
 const linkClass =
-  "inline-block border-l border-transparent text-sm/6 text-slate-600 hover:border-slate-300 hover:text-slate-900 dark:text-slate-400 dark:hover:border-slate-600 dark:hover:text-slate-200 aria-[current]:border-sky-500 aria-[current]:font-semibold aria-[current]:text-slate-900 dark:aria-[current]:border-sky-400 dark:aria-[current]:text-slate-100 pl-5 sm:pl-4 transition-colors";
+  "inline-block border-l border-transparent text-sm/6 text-slate-600 hover:border-slate-400 hover:text-slate-900 dark:text-slate-400 dark:hover:border-slate-600 dark:hover:text-slate-200 aria-[current]:border-sky-500 aria-[current]:font-semibold aria-[current]:text-sky-700 dark:aria-[current]:border-sky-400 dark:aria-[current]:text-slate-100 pl-5 sm:pl-4 transition-colors";
 
 const railClass =
   "flex flex-col gap-2 border-l border-slate-200 dark:border-slate-800";
@@ -12,7 +12,7 @@ export default function Sidebar() {
     <nav className="flex flex-col gap-8">
       {/* ── Introduction (home) ───────────────── */}
       <div className="flex flex-col gap-3">
-        <h3 className="font-mono text-sm/6 font-medium tracking-widest text-slate-400 uppercase sm:text-xs/6 dark:text-slate-500">
+        <h3 className="font-mono text-sm/6 font-medium tracking-widest text-slate-500 uppercase sm:text-xs/6 dark:text-slate-500">
           Introduction
         </h3>
         <ul className={railClass}>
@@ -27,7 +27,7 @@ export default function Sidebar() {
       {/* ── Doc groups ───────────────────────── */}
       {docsGroups.map((group) => (
         <div key={group.title} className="flex flex-col gap-3">
-          <h3 className="font-mono text-sm/6 font-medium tracking-widest text-slate-400 uppercase sm:text-xs/6 dark:text-slate-500">
+          <h3 className="font-mono text-sm/6 font-medium tracking-widest text-slate-500 uppercase sm:text-xs/6 dark:text-slate-500">
             {group.title}
           </h3>
           <ul className={railClass}>

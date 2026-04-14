@@ -2,6 +2,7 @@ import mdx from "@mdx-js/rollup";
 import react from "@vitejs/plugin-react-swc";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+import remarkGfm from "remark-gfm";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 
@@ -16,7 +17,7 @@ export default defineConfig({
     {
       enforce: "pre",
       ...mdx({
-        remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
+        remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm],
       }),
     },
     react({ include: /\.(jsx|js|mdx|md|tsx|ts)$/ }),
