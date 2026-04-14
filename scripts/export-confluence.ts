@@ -37,7 +37,10 @@ async function collectMarkdownFiles(root: string): Promise<string[]> {
 }
 
 async function markdownToHtml(markdown: string) {
-  const processed = await unified().use(remarkParse).use(html).process(markdown);
+  const processed = await unified()
+    .use(remarkParse)
+    .use(html)
+    .process(markdown);
   return String(processed);
 }
 
