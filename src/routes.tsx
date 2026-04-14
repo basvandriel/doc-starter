@@ -27,13 +27,13 @@ const docRoutes: RouteRecord[] = Object.entries(docModules).map(
           <article className="prose prose-slate max-w-none">
             <MDXContent />
           </article>
-          <div className="mt-12 overflow-hidden rounded-[2rem] border border-slate-200/70 bg-white ring-1 ring-slate-200/50 dark:border-slate-800/70 dark:bg-slate-950 dark:ring-white/5">
+          <div className="mt-12 overflow-hidden rounded-[1.75rem] border border-slate-200/60 bg-slate-50/80 dark:border-slate-800/60 dark:bg-slate-950/80">
             <div className="grid gap-5 p-6 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-[1.25rem] bg-slate-100 text-slate-800 ring-1 ring-slate-200/80 dark:bg-slate-900 dark:text-white dark:ring-white/10">
+              <div className="flex h-14 w-14 items-center justify-center rounded-[1.2rem] bg-slate-100 text-slate-700 ring-1 ring-slate-200/80 dark:bg-slate-900 dark:text-slate-300 dark:ring-white/10">
                 <svg
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="h-6 w-6 opacity-90"
+                  className="h-5 w-5 opacity-85"
                 >
                   <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.263.82-.583 0-.287-.01-1.05-.015-2.06-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.835 2.807 1.305 3.492.998.108-.775.42-1.305.763-1.605-2.665-.303-5.466-1.332-5.466-5.93 0-1.31.467-2.38 1.235-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.47 11.47 0 0 1 3.003-.404 11.45 11.45 0 0 1 3.003.404c2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.804 5.625-5.476 5.92.432.372.816 1.103.816 2.222 0 1.605-.015 2.898-.015 3.293 0 .323.216.7.825.58C20.565 21.798 24 17.3 24 12c0-6.63-5.37-12-12-12Z" />
                 </svg>
@@ -52,7 +52,7 @@ const docRoutes: RouteRecord[] = Object.entries(docModules).map(
                     href={editUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-700 underline-offset-4 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
                   >
                     <span>Edit page on GitHub</span>
                     <svg
@@ -69,7 +69,7 @@ const docRoutes: RouteRecord[] = Object.entries(docModules).map(
                       />
                     </svg>
                   </a>
-                  <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
+                  <span className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
                     {fileName}
                   </span>
                 </div>
