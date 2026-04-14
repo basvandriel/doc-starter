@@ -4,37 +4,24 @@
 // and this avoids a separate manifest generation step.
 
 import type { ComponentType } from "react";
-
-export interface DocEntry {
-  slug: string;
-  title: string;
-  description: string | undefined;
-  group: string | undefined;
-  path: string;
-}
+import type { DocEntry, DocFrontmatter } from "./lib/docs";
+import { slugFromFilePath, buildDocEntry } from "./lib/docs";
 
 export const docModules = import.meta.glob<{
   default: ComponentType;
-  frontmatter?: { title?: string; description?: string; group?: string };
+  frontmatter?: DocFrontmatter;
 }>("/docs/**/*.md", { eager: true }) as Record<
   string,
   {
     default: ComponentType;
-    frontmatter?: { title?: string; description?: string; group?: string };
+    frontmatter?: DocFrontmatter;
   }
 >;
 
 export const docsManifest: DocEntry[] = Object.entries(docModules)
-  .map(([filePath, mod]) => {
-    const slug = filePath.replace("/docs/", "").replace(/\.mdx?$/, "");
-    return {
-      slug,
-      title: mod.frontmatter?.title ?? slug,
-      description: mod.frontmatter?.description,
-      group: mod.frontmatter?.group,
-      path: `/${slug}`,
-    };
-  })
+  .map(([filePath, mod]) =>
+    buildDocEntry(slugFromFilePath(filePath), mod.frontmatter ?? {}),
+  )
   .sort((a, b) => a.slug.localeCompare(b.slug));
 
 /** Docs grouped by their `group` frontmatter field. Ungrouped docs land in "Docs". */
