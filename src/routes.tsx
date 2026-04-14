@@ -13,7 +13,8 @@ const docRoutes: RouteRecord[] = Object.entries(docModules).map(
       const MDXContent = mod.default;
       const pageTitle = mod.frontmatter?.title;
       const pageDescription = mod.frontmatter?.description;
-      const githubRepo = import.meta.env.VITE_GITHUB_REPO ?? "basvandriel/doc-starter";
+      const githubRepo =
+        import.meta.env.VITE_GITHUB_REPO ?? "basvandriel/doc-starter";
       const githubBranch = import.meta.env.VITE_GITHUB_BRANCH ?? "main";
       const editBase =
         import.meta.env.VITE_GITHUB_EDIT_BASE ??
