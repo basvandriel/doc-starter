@@ -2,17 +2,17 @@ import { NavLink } from "react-router-dom";
 import { docsGroups } from "../content";
 
 const linkClass =
-  "inline-block border-l border-transparent text-sm/6 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white aria-[current]:border-gray-950 aria-[current]:font-semibold aria-[current]:text-gray-950 dark:aria-[current]:border-white dark:aria-[current]:text-white pl-5 sm:pl-4";
+  "inline-block border-l border-transparent text-sm/6 text-slate-600 hover:border-slate-300 hover:text-slate-900 dark:text-slate-400 dark:hover:border-slate-600 dark:hover:text-slate-200 aria-[current]:border-sky-500 aria-[current]:font-semibold aria-[current]:text-slate-900 dark:aria-[current]:border-sky-400 dark:aria-[current]:text-slate-100 pl-5 sm:pl-4 transition-colors";
 
 const railClass =
-  "flex flex-col gap-2 border-l border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)] dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)]";
+  "flex flex-col gap-2 border-l border-slate-200 dark:border-slate-800";
 
 export default function Sidebar() {
   return (
     <nav className="flex flex-col gap-8">
       {/* ── Introduction (home) ───────────────── */}
       <div className="flex flex-col gap-3">
-        <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">
+        <h3 className="font-mono text-sm/6 font-medium tracking-widest text-slate-400 uppercase sm:text-xs/6 dark:text-slate-500">
           Introduction
         </h3>
         <ul className={railClass}>
@@ -27,7 +27,7 @@ export default function Sidebar() {
       {/* ── Doc groups ───────────────────────── */}
       {docsGroups.map((group) => (
         <div key={group.title} className="flex flex-col gap-3">
-          <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">
+          <h3 className="font-mono text-sm/6 font-medium tracking-widest text-slate-400 uppercase sm:text-xs/6 dark:text-slate-500">
             {group.title}
           </h3>
           <ul className={railClass}>

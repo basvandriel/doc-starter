@@ -87,17 +87,17 @@ export default function SearchDialog({ open, onClose }: Props) {
     <div className="fixed inset-0 z-50">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-gray-950/40 backdrop-blur-sm"
+        className="fixed inset-0 bg-slate-950/50 backdrop-blur-sm"
         onClick={onClose}
       />
 
       {/* Dialog */}
       <div className="relative mx-auto mt-[15vh] w-full max-w-lg px-4">
-        <div className="overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-gray-950/10 dark:bg-gray-900 dark:ring-white/10">
+        <div className="overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-slate-950/10 dark:bg-slate-900 dark:ring-slate-700/60 dark:shadow-slate-950/50">
           {/* Search input */}
-          <div className="flex items-center gap-3 border-b border-gray-950/10 px-4 dark:border-white/10">
+          <div className="flex items-center gap-3 border-b border-slate-200 px-4 dark:border-slate-800">
             <svg
-              className="h-4 w-4 shrink-0 text-gray-400"
+              className="h-4 w-4 shrink-0 text-slate-400"
               fill="none"
               viewBox="0 0 20 20"
               stroke="currentColor"
@@ -114,11 +114,11 @@ export default function SearchDialog({ open, onClose }: Props) {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search documentation…"
-              className="h-12 w-full bg-transparent text-sm text-gray-900 placeholder-gray-400 focus:outline-none dark:text-white dark:placeholder-gray-500"
+              className="h-12 w-full bg-transparent text-sm text-slate-900 placeholder-slate-400 focus:outline-none dark:text-slate-100 dark:placeholder-slate-500"
             />
             <button
               onClick={onClose}
-              className="shrink-0 rounded border border-gray-200 px-1.5 py-0.5 font-mono text-[10px] text-gray-400 dark:border-white/15 dark:text-gray-500"
+              className="shrink-0 rounded border border-slate-200 px-1.5 py-0.5 font-mono text-[10px] text-slate-400 dark:border-slate-700 dark:text-slate-500"
             >
               Esc
             </button>
@@ -132,8 +132,8 @@ export default function SearchDialog({ open, onClose }: Props) {
                   <button
                     className={`flex w-full flex-col items-start px-4 py-2.5 text-left transition-colors ${
                       i === activeIndex
-                        ? "bg-gray-100 dark:bg-white/10"
-                        : "hover:bg-gray-50 dark:hover:bg-white/5"
+                        ? "bg-sky-50 dark:bg-sky-500/10"
+                        : "hover:bg-slate-50 dark:hover:bg-slate-800/60"
                     }`}
                     onMouseEnter={() => setActiveIndex(i)}
                     onClick={() => {
@@ -141,11 +141,11 @@ export default function SearchDialog({ open, onClose }: Props) {
                       onClose();
                     }}
                   >
-                    <span className="text-sm font-medium text-gray-900 dark:text-white">
+                    <span className={`text-sm font-medium ${i === activeIndex ? "text-sky-700 dark:text-sky-300" : "text-slate-900 dark:text-slate-100"}`}>
                       {doc.title}
                     </span>
                     {doc.description && (
-                      <span className="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
+                      <span className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
                         {doc.description}
                       </span>
                     )}
@@ -156,13 +156,13 @@ export default function SearchDialog({ open, onClose }: Props) {
           )}
 
           {!isEmpty && results.length === 0 && (
-            <p className="px-4 py-8 text-center text-sm text-gray-500 dark:text-gray-400">
+            <p className="px-4 py-8 text-center text-sm text-slate-500 dark:text-slate-400">
               No results for &ldquo;{query}&rdquo;
             </p>
           )}
 
           {isEmpty && (
-            <p className="px-4 py-8 text-center text-sm text-gray-500 dark:text-gray-400">
+            <p className="px-4 py-8 text-center text-sm text-slate-500 dark:text-slate-400">
               Type to search documentation…
             </p>
           )}

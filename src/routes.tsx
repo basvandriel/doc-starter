@@ -33,9 +33,9 @@ const docRoutes: RouteRecord[] = Object.entries(docModules).map(
           <article className="prose prose-slate max-w-none">
             <MDXContent />
           </article>
-          <div className="mt-12 overflow-hidden rounded-[1.75rem] border border-slate-200/60 bg-slate-50/80 dark:border-slate-800/60 dark:bg-slate-950/80">
+          <div className="mt-12 overflow-hidden rounded-[1.75rem] border border-slate-200 bg-slate-50 dark:border-slate-800/60 dark:bg-slate-900/50">
             <div className="grid gap-5 p-6 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-[1.2rem] bg-slate-100 text-slate-700 ring-1 ring-slate-200/80 dark:bg-slate-900 dark:text-slate-300 dark:ring-white/10">
+              <div className="flex h-14 w-14 items-center justify-center rounded-[1.2rem] bg-slate-100 text-slate-600 ring-1 ring-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700/60">
                 <svg
                   viewBox="0 0 24 24"
                   fill="currentColor"
@@ -45,7 +45,7 @@ const docRoutes: RouteRecord[] = Object.entries(docModules).map(
                 </svg>
               </div>
               <div className="min-w-0">
-                <p className="text-sm font-semibold text-slate-900 dark:text-white">
+                <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
                   Help improve this page
                 </p>
                 <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400">
@@ -58,7 +58,7 @@ const docRoutes: RouteRecord[] = Object.entries(docModules).map(
                     href={editUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-700 underline-offset-4 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-700 underline-offset-4 hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-300"
                   >
                     <span>Edit page on GitHub</span>
                     <svg

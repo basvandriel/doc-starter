@@ -3,3 +3,45 @@
 
 /* Class-based dark mode: .dark on any ancestor activates dark: variants */
 @variant dark (&:where(.dark, .dark *));
+
+/* ── Dark mode prose ──────────────────────────────────────────────────── */
+.dark .prose {
+  --tw-prose-body:         theme(colors.slate.300);
+  --tw-prose-headings:     theme(colors.slate.100);
+  --tw-prose-lead:         theme(colors.slate.400);
+  --tw-prose-bold:         theme(colors.slate.100);
+  --tw-prose-links:        theme(colors.sky.400);
+  --tw-prose-code:         theme(colors.sky.300);
+  --tw-prose-pre-code:     theme(colors.slate.200);
+  --tw-prose-pre-bg:       theme(colors.slate.800);
+  --tw-prose-captions:     theme(colors.slate.500);
+  --tw-prose-quotes:       theme(colors.slate.300);
+  --tw-prose-quote-borders:theme(colors.sky.500);
+  --tw-prose-hr:           theme(colors.slate.700);
+  --tw-prose-counters:     theme(colors.slate.400);
+  --tw-prose-bullets:      theme(colors.slate.600);
+  --tw-prose-th-borders:   theme(colors.slate.600);
+  --tw-prose-td-borders:   theme(colors.slate.700);
+}
+
+/* Code block polish in dark mode */
+.dark .prose pre {
+  background-color: theme(colors.slate.800);
+  border: 1px solid theme(colors.slate.700);
+  color: theme(colors.slate.200);
+}
+
+/* Inline code chip */
+.dark .prose :not(pre) > code {
+  color: theme(colors.sky.300);
+  background-color: theme(colors.slate.800);
+  border: 1px solid theme(colors.slate.700);
+  border-radius: 0.3rem;
+  padding: 0.15em 0.4em;
+}
+
+/* Ensure inline code backtick ticks don't render */
+.dark .prose :not(pre) > code::before,
+.dark .prose :not(pre) > code::after {
+  content: none;
+}

@@ -19,13 +19,13 @@ export default function Layout() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-zinc-600 antialiased dark:bg-zinc-950 dark:text-zinc-400">
-      <header className="sticky top-0 z-40 flex h-14 items-center border-b border-zinc-200 bg-white px-4 sm:px-6 dark:border-zinc-800 dark:bg-zinc-950">
+    <div className="min-h-screen bg-white text-slate-600 antialiased dark:bg-slate-950 dark:text-slate-300">
+      <header className="sticky top-0 z-40 flex h-14 items-center border-b border-slate-200 bg-white/90 px-4 backdrop-blur-sm sm:px-6 dark:border-slate-800/70 dark:bg-slate-950/90">
         <a href="/" className="mr-8 flex shrink-0 items-center gap-2.5">
-          <div className="flex h-6 w-6 items-center justify-center rounded bg-sky-500 text-[11px] font-bold leading-none text-white">
+          <div className="flex h-6 w-6 items-center justify-center rounded bg-sky-500 text-[11px] font-bold leading-none text-white shadow-sm shadow-sky-500/30">
             S
           </div>
-          <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+          <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
             Syntax
           </span>
         </a>
@@ -33,7 +33,7 @@ export default function Layout() {
         <button
           type="button"
           onClick={() => setSearchOpen(true)}
-          className="hidden h-8 w-full max-w-xs items-center gap-2 rounded-md bg-zinc-100 px-3 text-sm text-zinc-500 ring-1 ring-zinc-300 transition hover:ring-zinc-400 focus:outline-none dark:bg-zinc-900 dark:ring-zinc-700/60 dark:hover:ring-zinc-600 lg:flex"
+          className="hidden h-8 w-full max-w-xs items-center gap-2 rounded-md bg-slate-100 px-3 text-sm text-slate-500 ring-1 ring-slate-200 transition hover:ring-slate-300 focus:outline-none dark:bg-slate-900 dark:text-slate-400 dark:ring-slate-700/60 dark:hover:ring-slate-600 lg:flex"
         >
           <svg
             className="h-3.5 w-3.5 shrink-0"
@@ -49,7 +49,7 @@ export default function Layout() {
             />
           </svg>
           <span>Search…</span>
-          <kbd className="ml-auto font-sans text-[10px] text-zinc-400 dark:text-zinc-600">
+          <kbd className="ml-auto font-sans text-[10px] text-slate-400 dark:text-slate-600">
             ⌘K
           </kbd>
         </button>
@@ -62,7 +62,7 @@ export default function Layout() {
                 ? `https://github.com/${import.meta.env.VITE_GITHUB_REPO}`
                 : "https://github.com"
             }
-            className="text-zinc-500 transition hover:text-zinc-700 dark:hover:text-zinc-200"
+            className="text-slate-400 transition hover:text-slate-700 dark:text-slate-500 dark:hover:text-slate-200"
             aria-label="GitHub"
           >
             <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -73,8 +73,8 @@ export default function Layout() {
       </header>
 
       <div className="flex">
-        <aside className="hidden w-80 shrink-0 lg:block">
-          <div className="sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto border-r border-gray-950/10 px-6 py-8 dark:border-white/10">
+        <aside className="hidden w-72 shrink-0 lg:block">
+          <div className="sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto border-r border-slate-200 px-6 py-8 dark:border-slate-800/60">
             <Sidebar />
           </div>
         </aside>
