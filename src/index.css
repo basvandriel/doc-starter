@@ -1,2 +1,5 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+/* Class-based dark mode: .dark on any ancestor activates dark: variants */
+@variant dark (&:where(.dark, .dark *));

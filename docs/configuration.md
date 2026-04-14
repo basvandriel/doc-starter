@@ -1,6 +1,7 @@
 ---
 title: Configuration
 description: Customize the build pipeline, plugins, and styling
+group: Getting started
 ---
 
 # Configuration
