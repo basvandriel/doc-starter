@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { docsManifest, type DocEntry } from "../docs-index";
+import { docsManifest, type DocEntry } from "../content";
 
 function scoreDoc(doc: DocEntry, query: string): number {
   const q = query.toLowerCase();

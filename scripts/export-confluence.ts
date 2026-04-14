@@ -5,8 +5,8 @@ import matter from "gray-matter";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import html from "remark-html";
-import type { DocFrontmatter } from "../src/lib/docs";
-import { slugFromFilePath, slugToTitle } from "../src/lib/docs";
+import type { DocFrontmatter } from "../src/content-utils";
+import { slugFromFilePath, slugToTitle } from "../src/content-utils";
 
 const docsRoot = path.resolve("docs");
 

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { docsGroups } from "../docs-index";
+import { docsGroups } from "../content";
 
 const linkClass =
   "inline-block border-l border-transparent text-sm/6 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white aria-[current]:border-gray-950 aria-[current]:font-semibold aria-[current]:text-gray-950 dark:aria-[current]:border-white dark:aria-[current]:text-white pl-5 sm:pl-4";

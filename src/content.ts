@@ -1,11 +1,29 @@
-// Eagerly import all doc modules so their frontmatter exports (title, description)
-// are available at bundle time for the sidebar and home page.
-// The MDX component (default export) is also included, but doc pages are small
-// and this avoids a separate manifest generation step.
-
 import type { ComponentType } from "react";
-import type { DocEntry, DocFrontmatter } from "./lib/docs";
-import { slugFromFilePath, buildDocEntry } from "./lib/docs";
+import type { DocFrontmatter } from "./content-utils";
+import { slugFromFilePath, slugToTitle } from "./content-utils";
+
+export interface DocEntry {
+  slug: string;
+  title: string;
+  description?: string;
+  group?: string;
+  path: string;
+  confluencePageId?: string;
+}
+
+export function buildDocEntry(
+  slug: string,
+  frontmatter: DocFrontmatter,
+): DocEntry {
+  return {
+    slug,
+    title: frontmatter.title ?? slugToTitle(slug),
+    description: frontmatter.description,
+    group: frontmatter.group,
+    path: `/${slug}`,
+    confluencePageId: frontmatter.confluencePageId,
+  };
+}
 
 export const docModules = import.meta.glob<{
   default: ComponentType;
@@ -24,7 +42,6 @@ export const docsManifest: DocEntry[] = Object.entries(docModules)
   )
   .sort((a, b) => a.slug.localeCompare(b.slug));
 
-/** Docs grouped by their `group` frontmatter field. Ungrouped docs land in "Docs". */
 export const docsGroups: { title: string; links: DocEntry[] }[] = (() => {
   const map = new Map<string, DocEntry[]>();
   for (const entry of docsManifest) {

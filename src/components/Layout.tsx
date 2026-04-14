@@ -57,7 +57,11 @@ export default function Layout() {
         <div className="ml-auto flex items-center gap-4">
           <ThemeToggle />
           <a
-            href="https://github.com"
+            href={
+              import.meta.env.VITE_GITHUB_REPO
+                ? `https://github.com/${import.meta.env.VITE_GITHUB_REPO}`
+                : "https://github.com"
+            }
             className="text-zinc-500 transition hover:text-zinc-700 dark:hover:text-zinc-200"
             aria-label="GitHub"
           >

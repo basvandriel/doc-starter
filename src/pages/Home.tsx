@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Head } from "vite-react-ssg";
-import { docsManifest } from "../docs-index";
+import { docsManifest } from "../content";
 
 export default function Home() {
   return (

@@ -3,7 +3,7 @@ import type { RouteRecord } from "vite-react-ssg";
 import { Head } from "vite-react-ssg";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
-import { docModules } from "./docs-index";
+import { docModules } from "./content";
 
 const docRoutes: RouteRecord[] = Object.entries(docModules).map(
   ([filePath, mod]) => {
@@ -13,7 +13,12 @@ const docRoutes: RouteRecord[] = Object.entries(docModules).map(
       const MDXContent = mod.default;
       const pageTitle = mod.frontmatter?.title;
       const pageDescription = mod.frontmatter?.description;
-      const editUrl = `https://github.com/basvandriel/doc-starter/blob/main${filePath}`;
+      const githubRepo = import.meta.env.VITE_GITHUB_REPO ?? "basvandriel/doc-starter";
+      const githubBranch = import.meta.env.VITE_GITHUB_BRANCH ?? "main";
+      const editBase =
+        import.meta.env.VITE_GITHUB_EDIT_BASE ??
+        `https://github.com/${githubRepo}/blob/${githubBranch}`;
+      const editUrl = `${editBase}${filePath}`;
       const fileName = filePath.replace("/docs/", "");
 
       return (
