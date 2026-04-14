@@ -14,6 +14,10 @@ on:
       - ".github/workflows/deploy-gh-pages.yml"
   workflow_dispatch: {}
 
+permissions:
+  contents: write
+  pages: write
+
 jobs:
   deploy:
     name: Build and deploy
@@ -39,7 +43,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./ 
+          publish_dir: ./dist
           publish_branch: gh-pages
           # Keep history and avoid Jekyll processing
           keep_files: false
