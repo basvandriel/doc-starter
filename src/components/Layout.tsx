@@ -1,52 +1,64 @@
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+import SearchDialog from "./SearchDialog";
 import Sidebar from "./Sidebar";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Layout() {
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  useEffect(() => {
+    function handler(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    }
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-400 antialiased">
-      {/* ── Header ───────────────────────────────────────────────────── */}
-      <header className="sticky top-0 z-40 h-14 border-b border-white/5 bg-slate-900/90 backdrop-blur">
-        <div className="flex h-full items-center gap-6 px-4 sm:px-6 lg:px-8">
-          {/* Logo */}
-          <a href="/" className="flex shrink-0 items-center gap-2.5">
-            <span className="flex h-6 w-6 items-center justify-center rounded-[5px] bg-linear-to-br from-sky-400 to-indigo-500 text-[11px] font-bold text-white">
-              S
-            </span>
-            <span className="text-sm font-semibold text-white tracking-tight">
-              Syntax
-            </span>
-          </a>
-
-          {/* Search */}
-          <div className="hidden flex-1 lg:flex">
-            <button
-              type="button"
-              className="flex w-full max-w-sm items-center gap-2 rounded-md border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-slate-500 transition hover:border-white/20 hover:bg-white/10 focus:outline-none"
-            >
-              <svg
-                className="h-4 w-4 shrink-0"
-                fill="none"
-                viewBox="0 0 20 20"
-                stroke="currentColor"
-                strokeWidth={1.5}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                />
-              </svg>
-              <span>Search docs…</span>
-              <kbd className="ml-auto font-sans   text-[10px] tracking-widest text-slate-600">
-                ⌘K
-              </kbd>
-            </button>
+    <div className="min-h-screen bg-white text-zinc-600 antialiased dark:bg-zinc-950 dark:text-zinc-400">
+      <header className="sticky top-0 z-40 flex h-14 items-center border-b border-zinc-200 bg-white px-4 sm:px-6 dark:border-zinc-800 dark:bg-zinc-950">
+        <a href="/" className="mr-8 flex shrink-0 items-center gap-2.5">
+          <div className="flex h-6 w-6 items-center justify-center rounded bg-sky-500 text-[11px] font-bold leading-none text-white">
+            S
           </div>
+          <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+            Syntax
+          </span>
+        </a>
 
-          {/* GitHub */}
+        <button
+          type="button"
+          onClick={() => setSearchOpen(true)}
+          className="hidden h-8 w-full max-w-xs items-center gap-2 rounded-md bg-zinc-100 px-3 text-sm text-zinc-500 ring-1 ring-zinc-300 transition hover:ring-zinc-400 focus:outline-none dark:bg-zinc-900 dark:ring-zinc-700/60 dark:hover:ring-zinc-600 lg:flex"
+        >
+          <svg
+            className="h-3.5 w-3.5 shrink-0"
+            fill="none"
+            viewBox="0 0 20 20"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+            />
+          </svg>
+          <span>Search…</span>
+          <kbd className="ml-auto font-sans text-[10px] text-zinc-400 dark:text-zinc-600">
+            ⌘K
+          </kbd>
+        </button>
+
+        <div className="ml-auto flex items-center gap-4">
+          <ThemeToggle />
           <a
             href="https://github.com"
-            className="ml-auto text-slate-500 transition hover:text-white lg:ml-0"
+            className="text-zinc-500 transition hover:text-zinc-700 dark:hover:text-zinc-200"
             aria-label="GitHub"
           >
             <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -56,22 +68,21 @@ export default function Layout() {
         </div>
       </header>
 
-      {/* ── Body ─────────────────────────────────────────────────────── */}
       <div className="flex">
-        {/* Sidebar column */}
-        <aside className="hidden w-64 shrink-0 lg:block">
-          <div className="sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto border-r border-white/5 px-6 py-10">
+        <aside className="hidden w-80 shrink-0 lg:block">
+          <div className="sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto border-r border-gray-950/10 px-6 py-8 dark:border-white/10">
             <Sidebar />
           </div>
         </aside>
 
-        {/* Content column */}
         <main className="min-w-0 flex-1">
-          <div className="mx-auto max-w-3xl px-6 py-12 sm:px-8 lg:px-12">
+          <div className="mx-auto max-w-2xl px-6 py-14 sm:px-10 lg:px-16">
             <Outlet />
           </div>
         </main>
       </div>
+
+      <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
     </div>
   );
 }

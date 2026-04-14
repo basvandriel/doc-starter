@@ -22,7 +22,7 @@ const docRoutes: RouteRecord[] = Object.entries(docModules).map(
               <meta name="description" content={pageDescription} />
             )}
           </Head>
-          <article className="prose prose-invert prose-slate prose-sky max-w-none">
+          <article className="prose prose-slate prose-sky max-w-none dark:prose-invert">
             <MDXContent />
           </article>
         </>

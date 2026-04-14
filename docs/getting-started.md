@@ -1,6 +1,7 @@
 ---
 title: Getting Started
 description: Learn how to get up and running in minutes
+group: Getting started
 ---
 
 # Getting Started

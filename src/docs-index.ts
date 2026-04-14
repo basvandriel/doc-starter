@@ -9,17 +9,18 @@ export interface DocEntry {
   slug: string;
   title: string;
   description: string | undefined;
+  group: string | undefined;
   path: string;
 }
 
 export const docModules = import.meta.glob<{
   default: ComponentType;
-  frontmatter?: { title?: string; description?: string };
+  frontmatter?: { title?: string; description?: string; group?: string };
 }>("/docs/**/*.md", { eager: true }) as Record<
   string,
   {
     default: ComponentType;
-    frontmatter?: { title?: string; description?: string };
+    frontmatter?: { title?: string; description?: string; group?: string };
   }
 >;
 
@@ -30,7 +31,19 @@ export const docsManifest: DocEntry[] = Object.entries(docModules)
       slug,
       title: mod.frontmatter?.title ?? slug,
       description: mod.frontmatter?.description,
+      group: mod.frontmatter?.group,
       path: `/${slug}`,
     };
   })
   .sort((a, b) => a.slug.localeCompare(b.slug));
+
+/** Docs grouped by their `group` frontmatter field. Ungrouped docs land in "Docs". */
+export const docsGroups: { title: string; links: DocEntry[] }[] = (() => {
+  const map = new Map<string, DocEntry[]>();
+  for (const entry of docsManifest) {
+    const key = entry.group ?? "Docs";
+    if (!map.has(key)) map.set(key, []);
+    map.get(key)!.push(entry);
+  }
+  return Array.from(map.entries()).map(([title, links]) => ({ title, links }));
+})();
